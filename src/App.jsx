@@ -206,7 +206,7 @@ function App() {
                         })
                       : null}
  
-                    {rectangles.map((rect, i) => (
+                    {rectangles.length?rectangles.map((rect, i) => (
                       <Rectangle
                         key={i}
                         annotationMenu={annotationMenu}
@@ -230,7 +230,7 @@ function App() {
                           setRectangles(rects);
                         }}
                       />
-                    ))}
+                    )):null}
                   </Layer>
                 </Stage>
               </div>
