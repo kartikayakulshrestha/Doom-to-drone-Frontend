@@ -38,7 +38,7 @@ const ImageUpload = () => {
       }
     );
     console.log(res.data);
-    if (res.data.message == "success") {
+    if (res.data.message) {
       navigate("/editor");
     }
 
