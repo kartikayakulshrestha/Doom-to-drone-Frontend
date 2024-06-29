@@ -135,7 +135,7 @@ function App() {
 
   return (
     <>
-      <div className="bg-black min-h-[100vh] min-w-[100%]">
+     <div className="bg-black min-h-[100vh] min-w-[100%]">
         <div
           className={`pt-3 grid ${
             annotationMenu ? "grid-col-1" : "grid-cols-4"
@@ -157,7 +157,7 @@ function App() {
                 <img
                   src={imageURL}
                   alt="Background"
-                  className="absolute  w-full h-full "
+                  className="absolute h-full"
                 />
               ) : null}
               {/* Overlay */}
@@ -169,7 +169,7 @@ function App() {
               <div className="relative z-10">
                 <Stage
                   width={annotationMenu ? 1625 : 1200}
-                  height={740}
+                  height={830}
                   onMouseDown={handleMouseDown}
                   onMouseMove={handleMouseMove}
                   onMouseUp={handleMouseUp}
@@ -181,13 +181,14 @@ function App() {
                     )}
 
                     {/* Render rectangles */}
-                    {(imageURL&&rectangles.length)
+                     {imageURL
                       ? rectangles.map((rect, index) => {
                           return (
-                            <div key={index}>
+                            
                               <KonvaImage
                                 key={index}
                                 image={image}
+                                
                                 x={rect.x} 
                                 y={rect.y} 
                                 width={rect.width} 
@@ -197,14 +198,15 @@ function App() {
                                   y: rect.y,
                                   width: rect.width,
                                   height: rect.height,
+                                
                                 }} 
-                              />{" "}
-                            </div>
+                              />
+                            
                           );
                         })
                       : null}
-
-                    {rectangles.length?rectangles.map((rect, i) => (
+ 
+                    {rectangles.map((rect, i) => (
                       <Rectangle
                         key={i}
                         annotationMenu={annotationMenu}
@@ -228,7 +230,7 @@ function App() {
                           setRectangles(rects);
                         }}
                       />
-                    )):null}
+                    ))}
                   </Layer>
                 </Stage>
               </div>
